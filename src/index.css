@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@100..800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Outfit", sans-serif;
-  --font-accent: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   
   --color-brand-primary: #15803d; /* Forest Green */
   --color-brand-secondary: #facc15; /* Safety Yellow */
   --color-brand-dark: #06110d; /* Deep Forest Dark */
   --color-brand-surface: #ffffff;
   --color-brand-muted: #f8faf9;
+  --color-brand-concrete: #e5e7eb;
 }
 
 @layer base {

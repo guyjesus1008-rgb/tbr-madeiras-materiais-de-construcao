@@ -1,38 +1,56 @@
 import { motion } from 'motion/react';
-import { breathAnimation } from '../utils/animations';
+import { Shield, Zap, Factory, Crosshair } from 'lucide-react';
 
 const reasons = [
-  { title: "Estoque Real", desc: "Não trabalhamos com promessas. O que você vê no catálogo está em nosso galpão de 2.000m²." },
-  { title: "Preço de Fábrica", desc: "Negociamos direto com as maiores indústrias para garantir o melhor custo-benefício de Tocantinópolis." },
-  { title: "Entrega Ninja", desc: "Nossa frota própria conhece cada rua da cidade. Entregamos enquanto o cimento ainda está fresco." }
+  { 
+    title: "Estoque Real", 
+    desc: "Disponibilidade imediata confirmada em sistema. Nosso galpão de 2.000m² é o pulmão da sua obra.",
+    icon: <Factory className="w-5 h-5" />
+  },
+  { 
+    title: "Preço de Fábrica", 
+    desc: "Negociação direta via parcerias industriais estratégicas. O melhor custo por m² de Tocantinópolis.",
+    icon: <Shield className="w-5 h-5" />
+  },
+  { 
+    title: "Logística Alpha", 
+    desc: "Frota própria com roteirização inteligente. Entrega sincronizada com o cronograma da sua construção.",
+    icon: <Zap className="w-5 h-5" />
+  }
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 md:py-32 px-6 bg-white overflow-hidden">
+    <section className="py-20 md:py-40 px-6 bg-white overflow-hidden font-sans border-t border-brand-dark/5">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8 md:space-y-12"
+            className="space-y-12"
           >
             <div>
-              <p className="text-brand-primary font-black text-[10px] uppercase tracking-[0.5em] mb-4 md:topic-6">Por que nos escolher?</p>
-              <h2 className="text-4xl md:text-6xl font-display font-black text-brand-dark leading-[0.9] tracking-tighter">
-                A inteligência que sua <br />
-                <span className="text-brand-primary italic">obra exige.</span>
+              <div className="flex items-center gap-3 mb-6">
+                <Crosshair className="text-brand-primary w-4 h-4" />
+                <p className="text-brand-primary font-black text-[10px] uppercase tracking-[0.5em]">Quality_Assurance_Protocol</p>
+              </div>
+              <h2 className="text-5xl md:text-7xl font-display font-black text-brand-dark leading-[0.85] tracking-tighter uppercase">
+                A INTELIGÊNCIA QUE SUA <br />
+                <span className="text-brand-primary italic text-[4rem] md:text-[6rem]">OBRA EXIGE.</span>
               </h2>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               {reasons.map((item, i) => (
-                <div key={i} className="flex gap-6 items-start">
-                  <div className="w-1 h-12 bg-brand-secondary/30 rounded-full shrink-0 mt-1" />
-                  <div>
-                    <h4 className="text-brand-dark font-black text-sm uppercase tracking-widest mb-2">{item.title}</h4>
-                    <p className="text-brand-dark/50 leading-relaxed font-medium">{item.desc}</p>
+                <div key={i} className="flex gap-8 items-start group">
+                  <div className="w-12 h-12 bg-brand-muted border border-brand-dark/5 flex items-center justify-center text-brand-primary shrink-0 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-500">
+                    {item.icon}
+                  </div>
+                  <div className="border-b border-brand-dark/5 pb-8 w-full">
+                    <h4 className="text-brand-dark font-black text-xs uppercase tracking-[0.2em] mb-3">{item.title}</h4>
+                    <p className="text-brand-dark/50 leading-relaxed font-light text-lg">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -40,29 +58,40 @@ export default function WhyChooseUs() {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            {...breathAnimation}
-            className="relative flex justify-center lg:justify-end"
+            className="relative"
           >
-            <div className="aspect-square w-full max-w-[500px] bg-brand-muted rounded-[4rem] p-12 md:p-20 flex items-center justify-center text-center shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-black/5 relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[4rem]" />
-              <h3 className="text-3xl md:text-5xl font-display font-black text-brand-dark leading-[1.1] tracking-tighter relative z-10">
-                Primeira loja de materiais de construção <br />
-                <span className="text-brand-primary">BBB:</span> <br />
-                <span className="italic underline decoration-brand-secondary decoration-4 underline-offset-8">bom, bonito e barato!</span> 😆
-              </h3>
+            <div className="bg-brand-dark p-12 md:p-20 text-center relative overflow-hidden border-t-8 border-brand-secondary">
+              {/* DECORATIVE GRID */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" 
+                   style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
               
-              {/* Decorative dots */}
-              <div className="absolute top-12 left-12 flex gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand-primary/20" />
-                <div className="w-2 h-2 rounded-full bg-brand-primary/10" />
+              <div className="relative z-10">
+                <span className="font-mono text-[9px] text-brand-secondary uppercase tracking-[0.5em] mb-8 block">TBR_METRICS_2026</span>
+                <h3 className="text-4xl md:text-6xl font-display font-black text-white leading-none tracking-tighter uppercase mb-8">
+                  EFICIÊNCIA <br />
+                  <span className="text-brand-secondary italic">TOTAL.</span>
+                </h3>
+                <p className="text-white/40 text-sm leading-relaxed max-w-xs mx-auto font-light">
+                  Sincronizamos nosso estoque com sua necessidade. Menos desperdício, mais resultado real na sua obra.
+                </p>
+                <div className="mt-12 flex justify-center gap-2">
+                  {[1,2,3].map(i => <div key={i} className="w-2 h-2 bg-brand-secondary/20" />)}
+                </div>
               </div>
             </div>
+            
+            {/* FLOATING COORDINATE LABEL */}
+            <div className="absolute -bottom-6 -right-6 bg-brand-secondary p-4 font-mono text-[9px] font-black text-brand-dark uppercase tracking-widest hidden md:block">
+              [ REF_STRUCT_04 ]
+            </div>
           </motion.div>
+
         </div>
       </div>
     </section>
   );
 }
+
